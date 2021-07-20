@@ -10,7 +10,7 @@ title1 = "┏━━━┳┓╋╋╋╋╋╋┏┓╋┏━━━━┓╋╋�
 
 title2 = "欢迎使用酷安@铭灏MarvL05制作的自动化解锁+刷机工具，该软件专为小白设计，\n如大佬们有什么意见可以到Github提issue 项目名:Flashtool_By_MarvL05\n该软件目前支持Sony和Pixel的部分设备，如未适配还请谅解\n（毕竟作者是个高二狗\n"
 
-content = "============================================\n===================主菜单===================\n============================================\n1.安装Android驱动         5.酷安个人主页传送门\n2.解锁BootLoader          6.Github项目传送门\n3.刷入全量包              7.作者QQ传送门\n4.刷入面具Patch.img\n\n0.退出\n"
+content = "==============================================\n====================主菜单====================\n==============================================\n1.安装Android驱动         5.酷安个人主页传送门\n2.解锁BootLoader          6.Github项目传送门\n3.刷入全量包              7.作者QQ传送门\n4.刷入面具Patch.img\n\n0.退出\n"
 
 alltitle = title1 + "\n" + title2 + "\n" + content
 print(alltitle)
@@ -215,10 +215,17 @@ while True:
                     print("达咩！请重新输入！")
     elif inn == "5":
         webbrowser.open("http://www.coolapk.com/u/1925252", new=0, autoraise=True)
+        os.system("cls")
+        print(alltitle)
     elif inn == "6":
         webbrowser.open("https://github.com/MarvL05/Flashtool_By_MarvL05", new=0, autoraise=True)
+        os.system("cls")
+        print(alltitle)
     elif inn == "7":
         webbrowser.open("http://wpa.qq.com/msgrd?v=3&uin=2627599936&site=qq&menu=yes", new=0, autoraise=True)
+        os.system("cls")
+        print(alltitle)
+    elif inn == "0":
+        exit()
     else:
         print("达咩！请重新输入！")
-
