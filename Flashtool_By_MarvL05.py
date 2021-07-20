@@ -37,7 +37,7 @@ while True:
                 print("达咩！请重新输入！")
     elif inn == "2":
         os.system("cls")
-        print("\n注意！!请确认驱动已经安装正确且开发者选项中‘OEM解锁’已开启")
+        print("\n注意！!请确认驱动已经安装正确且开发者选项中‘OEM解锁’已开启\n解锁Bootloader会清除用户数据，请在执行之前妥善备份")
         print("\n1.Sony设备\n2.Pixel设备\n\n0.返回上一级")
         while True:
             unlock = input("\n输入你的选项：")
@@ -49,7 +49,7 @@ while True:
                 os.system("pause")
                 code = input("\n请输入你的解锁码：")
                 os.system("fastboot oem unlock 0x" + code)
-                print("解锁成功！")
+                print("出现success则表明解锁成功")
                 os.system("pause")
                 os.system("cls")
                 print(alltitle)
@@ -61,7 +61,7 @@ while True:
                 print("\n请确认设备已进入Bootloader，确认后回车继续")
                 os.system("pause")
                 os.system("fastboot flashing unlock")
-                print("解锁成功！")
+                print("出现success则表明解锁成功")
                 os.system("pause")
                 os.system("cls")
                 print(alltitle)
@@ -85,7 +85,7 @@ while True:
                 print("达咩！请重新输入！")
     elif inn == "4":
         os.system("cls")
-        device_content = "\n请选择你的设备：\n\n1.Pixel 3\n2.Pixel 3XL\n3.Pixel 3a\n4.Pixel 3aXL\n5.Pixel 4\n6.Pixel 4XL\n7.Pixel 4a\n8.Pixel 4a(5G)\n9.Pixel 5\n\n0.返回上一级"
+        device_content = "\n如果显示 < waiting for any device >，请检查驱动程序\n请选择你的设备：\n\n1.Pixel 3\n2.Pixel 3XL\n3.Pixel 3a\n4.Pixel 3aXL\n5.Pixel 4\n6.Pixel 4XL\n7.Pixel 4a\n8.Pixel 4a(5G)\n9.Pixel 5\na.手动刷入\n\n0.返回上一级"
         print(device_content)
         while True:
             while True:
@@ -95,118 +95,131 @@ while True:
                     ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
                     if ask == "Y" or ask == "y":
                         os.system("fastboot flash boot patch.img")
-                        print("刷入成功！")
+                        print("出现success则表明刷入成功")
                         os.system("pause")
                         os.system("cls")
                         print(device_content)
                     elif ask == "N" or ask == "n":
                         os.system("cls")
                         print(device_content)
-                        break
+                    break
                 elif device == "2":
                     wget.download("http://kod.marvl05.site:88/?explorer/share/fileDownload&shareID=7LoPZVyg&path=%7BshareItemLink%3A7LoPZVyg%7D%2FGoogle%20Pixel%203%20XL%2Fpatch.img&s=Kl9Zm","patch.img")
                     ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
                     if ask == "Y" or ask == "y":
                         os.system("fastboot flash boot patch.img")
-                        print("刷入成功！")
+                        print("出现success则表明刷入成功")
                         os.system("pause")
                         os.system("cls")
                         print(device_content)
                     elif ask == "N" or ask == "n":
                         os.system("cls")
                         print(device_content)
-                        break
+                    break
                 elif device == "3":
                     wget.download("http://kod.marvl05.site:88/?explorer/share/fileDownload&shareID=7LoPZVyg&path=%7BshareItemLink%3A7LoPZVyg%7D%2FGoogle%20Pixel%203a%2Fpatch.img&s=dJky2","patch.img")
                     ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
                     if ask == "Y" or ask == "y":
                         os.system("fastboot flash boot patch.img")
-                        print("刷入成功！")
+                        print("出现success则表明刷入成功")
                         os.system("pause")
                         os.system("cls")
                         print(device_content)
                     elif ask == "N" or ask == "n":
                         os.system("cls")
                         print(device_content)
-                        break
+                    break
                 elif device == "4":
                     wget.download("http://kod.marvl05.site:88/?explorer/share/fileDownload&shareID=7LoPZVyg&path=%7BshareItemLink%3A7LoPZVyg%7D%2FGoogle%20Pixel%203a%20XL%2Fpatch.img&s=Tupss","patch.img")
                     ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
                     if ask == "Y" or ask == "y":
                         os.system("fastboot flash boot patch.img")
-                        print("刷入成功！")
+                        print("出现success则表明刷入成功")
                         os.system("pause")
                         os.system("cls")
                         print(device_content)
                     elif ask == "N" or ask == "n":
                         os.system("cls")
                         print(device_content)
-                        break
+                    break
                 elif device == "5":
                     wget.download("http://kod.marvl05.site:88/?explorer/share/fileDownload&shareID=7LoPZVyg&path=%7BshareItemLink%3A7LoPZVyg%7D%2FGoogle%20Pixel%204%2Fpatch.img&s=S4eX0","patch.img")
                     ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
                     if ask == "Y" or ask == "y":
                         os.system("fastboot flash boot patch.img")
-                        print("刷入成功！")
+                        print("出现success则表明刷入成功")
                         os.system("pause")
                         os.system("cls")
                         print(device_content)
                     elif ask == "N" or ask == "n":
                         os.system("cls")
                         print(device_content)
-                        break
+                    break
                 elif device == "6":
                     wget.download("http://kod.marvl05.site:88/?explorer/share/fileDownload&shareID=7LoPZVyg&path=%7BshareItemLink%3A7LoPZVyg%7D%2FGoogle%20Pixel%204%20XL%2Fpatch.img&s=VaNL1","patch.img")
                     ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
                     if ask == "Y" or ask == "y":
                         os.system("fastboot flash boot patch.img")
-                        print("刷入成功！")
+                        print("出现success则表明刷入成功")
                         os.system("pause")
                         os.system("cls")
                         print(device_content)
                     elif ask == "N" or ask == "n":
                         os.system("cls")
                         print(device_content)
-                        break
+                    break
                 elif device == "7":
                     wget.download("http://kod.marvl05.site:88/?explorer/share/fileDownload&shareID=7LoPZVyg&path=%7BshareItemLink%3A7LoPZVyg%7D%2FGoogle%20Pixel%204a%2Fpatch.img&s=kUB6B","patch.img")
                     ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
                     if ask == "Y" or ask == "y":
                         os.system("fastboot flash boot patch.img")
-                        print("刷入成功！")
+                        print("出现success则表明刷入成功")
                         os.system("pause")
                         os.system("cls")
                         print(device_content)
                     elif ask == "N" or ask == "n":
                         os.system("cls")
                         print(device_content)
-                        break
+                    break
                 elif device == "8":
                     wget.download("http://kod.marvl05.site:88/?explorer/share/fileDownload&shareID=7LoPZVyg&path=%7BshareItemLink%3A7LoPZVyg%7D%2FGoogle%20Pixel%204a(5G)%2Fpatch.img&s=VcPfj","patch.img")
                     ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
                     if ask == "Y" or ask == "y":
                         os.system("fastboot flash boot patch.img")
-                        print("刷入成功！")
+                        print("出现success则表明刷入成功")
                         os.system("pause")
                         os.system("cls")
                         print(device_content)
                     elif ask == "N" or ask == "n":
                         os.system("cls")
                         print(device_content)
-                        break
+                    break
                 elif device == "9":
                     wget.download("http://kod.marvl05.site:88/?explorer/share/fileDownload&shareID=7LoPZVyg&path=%7BshareItemLink%3A7LoPZVyg%7D%2FGoogle%20Pixel%205%2Fpatch.img&s=tABWo","patch.img")
                     ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
                     if ask == "Y" or ask == "y":
                         os.system("fastboot flash boot patch.img")
-                        print("刷入成功！")
+                        print("出现success则表明刷入成功")
                         os.system("pause")
                         os.system("cls")
                         print(device_content)
                     elif ask == "N" or ask == "n":
                         os.system("cls")
                         print(device_content)
-                        break
+                    break
+                elif device == "a" or device == "A":
+                    os.system("cls")
+                    manual = input("手动刷入需要将文件名改为patch.img并放入工具箱目录内，确认已完成？（Y/n）")
+                    if manual == "Y" or manual == "y":
+                        os.system("fastboot flash patch.img")
+                        print("出现success则表明刷入成功")
+                        os.system("pause")
+                        os.system("cls")
+                        print(alltitle)
+                    elif manual == "n" or manual == "N":
+                        os.system("cls")
+                        print(device_content)
+                    break
                 elif device == "0":
                     os.system("cls")
                     print(alltitle)
