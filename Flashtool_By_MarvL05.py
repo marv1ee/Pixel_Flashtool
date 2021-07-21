@@ -85,7 +85,7 @@ while True:
                 print("达咩！请重新输入！")
     elif inn == "4":
         os.system("cls")
-        device_content = "\n如果显示 < waiting for any device >，请检查驱动程序\n请选择你的设备：\n\n1.Pixel 3\n2.Pixel 3XL\n3.Pixel 3a\n4.Pixel 3aXL\n5.Pixel 4\n6.Pixel 4XL\n7.Pixel 4a\n8.Pixel 4a(5G)\n9.Pixel 5\na.手动刷入\n\n0.返回上一级"
+        device_content = "\n如果显示 < waiting for any device >，请检查驱动程序\n请选择你的设备：\n\n1.Pixel 3\n2.Pixel 3XL\n3.Pixel 3a\n4.Pixel 3aXL\n5.Pixel 4\n6.Pixel 4XL\n7.Pixel 4a\n8.手动刷入\n\n0.返回上一级"
         print(device_content)
         while True:
             while True:
@@ -182,36 +182,10 @@ while True:
                         print(device_content)
                     break
                 elif device == "8":
-                    wget.download("http://kod.marvl05.site:88/?explorer/share/fileDownload&shareID=7LoPZVyg&path=%7BshareItemLink%3A7LoPZVyg%7D%2FGoogle%20Pixel%204a(5G)%2Fpatch.img&s=VcPfj","patch.img")
-                    ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
-                    if ask == "Y" or ask == "y":
-                        os.system("fastboot flash boot patch.img")
-                        print("出现success则表明刷入成功")
-                        os.system("pause")
-                        os.system("cls")
-                        print(device_content)
-                    elif ask == "N" or ask == "n":
-                        os.system("cls")
-                        print(device_content)
-                    break
-                elif device == "9":
-                    wget.download("http://kod.marvl05.site:88/?explorer/share/fileDownload&shareID=7LoPZVyg&path=%7BshareItemLink%3A7LoPZVyg%7D%2FGoogle%20Pixel%205%2Fpatch.img&s=tABWo","patch.img")
-                    ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
-                    if ask == "Y" or ask == "y":
-                        os.system("fastboot flash boot patch.img")
-                        print("出现success则表明刷入成功")
-                        os.system("pause")
-                        os.system("cls")
-                        print(device_content)
-                    elif ask == "N" or ask == "n":
-                        os.system("cls")
-                        print(device_content)
-                    break
-                elif device == "a" or device == "A":
                     os.system("cls")
                     manual = input("手动刷入需要将文件名改为patch.img并放入工具箱目录内，确认已完成？（Y/n）")
                     if manual == "Y" or manual == "y":
-                        os.system("fastboot flash patch.img")
+                        os.system("fastboot flash boot patch.img")
                         print("出现success则表明刷入成功")
                         os.system("pause")
                         os.system("cls")
