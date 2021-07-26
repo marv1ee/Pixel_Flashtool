@@ -35,7 +35,7 @@ while True:
     inn = input("输入你的选项：")
     if inn == "1":
         os.system("cls")
-        cmd_content = "\nADB & Fastboot基本指令\n\na.检测ADB设备\nb.检测Fastboot设备\nADB:\n1.重启手机至系统\n2.重启手机至Fastboot\n3.重启手机至Recovery\n4.关闭手机\nFastboot:\n5.重启手机至系统\n6.重启手机至Fastboot\n7.重启手机至Recovery\n8.关闭手机\n\n9.自行输入命令\n0.返回上一级"
+        cmd_content = "\nADB & Fastboot基本指令\n\na.检测ADB设备\nb.检测Fastboot设备\nADB:\n1.重启手机至系统\n2.重启手机至Fastboot\n3.重启手机至Recovery\n4.关闭手机\nFastboot:\n5.重启手机至系统\n6.重启手机至Fastboot\n7.重启手机至Recovery\n8.关闭手机\n\nc.安装酷安\nm.安装Magisk Manager\nz.自行安装app\n\n9.自行输入命令\n0.返回上一级"
         print(cmd_content)
         def cmd_function():         #清屏 + 打印命令目录
             os.system("cls")
@@ -81,18 +81,42 @@ while True:
                 print("\nSony设备拔下数据线即关机\nPixel设备点按音量键选择Power off点按电源键关机")
                 ospause()
                 cmd_function()
+            elif cmd == "c" or cmd == "C":
+                wget.download("http://one.marvl05.site:88/apks/Coolapk.apk", "Coolapk.apk")
+                print()
+                os.system("adb install Coolapk.apk")
+                print("出现success即安装成功！")
+                ospause()
+                os.system("del Coolapk.apk")
+                cmd_function()
+            elif cmd == "m" or cmd == "M":
+                wget.download("http://one.marvl05.site:88/apks/Magisk-v23.0.apk", "Magisk.apk")
+                print()
+                os.system("adb install Magisk.apk")
+                print("出现success即安装成功！")
+                ospause()
+                os.system("del Magisk.apk")
+                cmd_function()
+            elif cmd == "z" or cmd == "Z":
+                apk = input("\n请将安装包直接拖进命令行窗口然后回车：")
+                os.system("adb install " + apk)
+                print("出现success即安装成功！")
+                ospause()
+                cmd_function()
             elif cmd == "9":
                 cmd_in = input("输入ADB或Fastboot指令：")
                 os.system(cmd_in)
+                ospause()
+                cmd_function()
             elif cmd == "0":
                 cls_printall()
                 break
             else:
                 print_error()
     elif inn == "2":
+        os.system("cls")
+        print("\nEmmmm，暂时还没有好的自动解决方案，\n请自行进入Android_Driver文件夹右击android_winusb.inf安装\n↓如果安装后发现fastboot不生效请参考此教程↓")
         while True:
-            os.system("cls")
-            print("\nEmmmm，暂时还没有好的自动解决方案，\n请自行进入Android_Driver文件夹右击android_winusb.inf安装\n↓如果安装后发现fastboot不生效请参考此教程↓")
             tips = input("是否打开教程？（Y/n）：")
             if tips == "y" or tips == "Y":
                 web_open(weburl="http://marvl05.site:88/tjqn")
@@ -107,7 +131,7 @@ while True:
                 print_error()
     elif inn == "3":
         os.system("cls")
-        print("\n注意！!请确认驱动已经安装正确且开发者选项中‘OEM解锁’已开启\n解锁Bootloader会清除用户数据，请在执行之前妥善备份")
+        print("\n注意！!请确认驱动已经安装正确且开发者选项中‘OEM解锁’已开启\n解锁Bootloader会清除用户数据，请在执行之前妥善备份\n请先重启进入Fastboot模式（可在主菜单第一项内重启）")
         print("\n1.Sony设备\n2.Pixel设备\n\n0.返回上一级")
         while True:
             unlock = input("\n输入你的选项：")
@@ -136,21 +160,11 @@ while True:
                 break
             else:
                 print_error()
-    elif inn == "4":
-        os.system("cls")
-        print("\n此功能尚未完善，在酷安多给作者点赞可能更新会快点哦\n\n0.返回上一级")
-        flash = input("\n输入你的选项：")
-        while True:
-            if flash == "0":
-                os.system("cls")
-                print(all)
-                break
-            else:
-                print_error()
     elif inn == "5":
         os.system("cls")
-        device_content = "\n如果显示 < waiting for any device >，请检查驱动程序\n请选择你的设备：\n\n1.Pixel 3\n2.Pixel 3XL\n3.Pixel 3a\n4.Pixel 3aXL\n5.Pixel 4\n6.Pixel 4XL\n7.Pixel 4a\n8.手动刷入\n\n0.返回上一级"
-        img_url = "http://one.marvl05.site:88/?/Pixel_PatchImage/Beta3/"
+        device_content = "\n请先重启进入Fastboot模式（可在主菜单第一项内重启）\n如果显示 < waiting for any device >，请检查驱动程序\n请选择你的设备：\n\n1.Pixel 3\n2.Pixel 3XL\n3.Pixel 3a\n4.Pixel 3aXL\n5.Pixel 4\n6.Pixel 4XL\n7.Pixel 4a\n8.手动刷入\n\n0.返回上一级"
+        img_url = "http://one.marvl05.site:88/Pixel_PatchImage/Beta3/"
+        print("\n！！！这里的面具修补包仅限Android 12 Beta 2/3 版本刷入！！！\n！！！                其他版本不得靠近                ！！！")
         print(device_content)
         def download_img(img_filename):         #下载patch.img并询问是否刷入 函数
             wget.download(img_url + img_filename, img_filename)
@@ -159,6 +173,7 @@ while True:
                 os.system("fastboot flash boot " + img_filename)
                 os.system("fastboot reboot")
                 ospause()
+                os.system("del " + img_filename)
                 os.system("cls")
                 print(device_content)
             elif ask == "N" or ask == "n":
@@ -182,13 +197,13 @@ while True:
                 elif device == "7":
                     download_img(img_filename="4a.img")
                 elif device == "8":
+                    os.system("cls")
                     manual = input("手动刷入需要将文件名改为patch.img并放入工具箱目录内，确认已完成？（Y/n）")
                     if manual == "Y" or manual == "y":
                         os.system("fastboot flash boot patch.img")
                         os.system("fastboot reboot")
                         ospause()
-                        os.system("cls")
-                        print(all)
+                        cls_printall()
                     elif manual == "n" or manual == "N":
                         os.system("cls")
                         print(device_content)
@@ -199,10 +214,10 @@ while True:
                     print_error()
             break
     elif inn == "6":
-        web_open(weburl="http://www.coolapk.com/u/1925252")  #打开酷安个人主页
+        web_open(weburl="http://marvl05.site:88/jaz6")  #打开酷安个人主页
         cls_printall()
     elif inn == "7":
-        web_open(weburl="https://github.com/MarvL05/Flashtool_By_MarvL05")   #打开Github项目
+        web_open(weburl="https://github.com/MarvL05/Flashtool_By_MarvL05/")   #打开Github项目
         cls_printall()
     elif inn == "8":
         web_open(weburl="http://wpa.qq.com/msgrd?v=3&uin=2627599936&site=qq&menu=yes")   #添加作者QQ
