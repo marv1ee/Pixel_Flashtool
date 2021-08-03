@@ -177,15 +177,20 @@ while True:
                 os.system("del Magisk.apk")
                 cmd_function()
             elif cmd == "z" or cmd == "Z":
-                apk = input("\n请将安装包直接拖进命令行窗口然后回车：")
+                apkin = Tk()
+                apkin.withdraw()
+                apk = askopenfilename(filetypes=[("Apk File", "*.apk")])
                 os.system("adb install " + apk)
                 print("出现success即安装成功！")
                 ospause()
                 cmd_function()
             elif cmd == "9":
-                cmd_in = input("输入ADB或Fastboot指令：")
-                os.system(cmd_in)
-                ospause()
+                while True:
+                    cmd_in = input("输入ADB或Fastboot指令(输入exit退出)：")
+                    if cmd_in == "exit" or cmd_in == "Exit" or cmd_in == "EXIT":
+                        break
+                    else:
+                        os.system(cmd_in)
                 cmd_function()
             elif cmd == "0":
                 cls_printall()
@@ -327,16 +332,15 @@ while True:
                 elif device == "7":
                     download_img(img_filename="4a.img")
                 elif device == "8":
+                    flash = Tk()
+                    flash.withdraw()
+                    manual = askopenfilename(filetypes=[("Boot Image", "*.img")])
+                    os.system("fastboot flash boot " + manual)
+                    os.system("fastboot reboot")
+                    ospause()
+                    cls_printall()
                     os.system("cls")
-                    manual = input("手动刷入需要将文件名改为patch.img并放入工具箱目录内，确认已完成？（Y/n）")
-                    if manual == "Y" or manual == "y":
-                        os.system("fastboot flash boot patch.img")
-                        os.system("fastboot reboot")
-                        ospause()
-                        cls_printall()
-                    elif manual == "n" or manual == "N":
-                        os.system("cls")
-                        print(device_content)
+                    print(device_content)
                 elif device == "0":
                     cls_printall()
                     break
