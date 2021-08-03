@@ -194,10 +194,10 @@ while True:
                 print_error()
     elif inn == "2":
         os.system("cls")
-        os.system("cd Android_Driver")
-        os.system("pnputil -i -a android_winusb.inf")
-        os.system("cd ../")
-        print("看上方提示安装情况，安装好后重新插拔设备，\n↓如果还是无法使用请参考教程↓")
+        print("\nEmmmm，暂时还没有好的自动解决方案，\n"
+              "请在Android_Driver文件夹右击android_winusb.inf安装\n"
+              "↓如果安装后发现fastboot不生效请参考此教程↓")
+        os.system("start Android_Driver")
         while True:
             tips = input("是否打开教程？（Y/n）：")
             if tips == "y" or tips == "Y":
