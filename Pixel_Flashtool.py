@@ -33,7 +33,6 @@ content = "================================================\n" \
 allcontent = title1 + "\n" + title2 + "\n" + content
 
 
-
 def cls_printall():  # 清屏 + 打印主页
     os.system("cls")
     print(allcontent)
@@ -93,12 +92,29 @@ def download_img(img_filename):  # 下载patch.img并询问是否刷入 函数
 
 
 if os.path.isdir("platform-tools"):
-    os.system("md C:\Windows\platform-tools")
-    os.system("xcopy platform-tools C:\Windows\platform-tools /e")
-    os.system('setx /M path "%path%;C:\Windows\platform-tools\"')
-    os.system("rmdir /S /Q platform-tools")
-    print("成功！三秒后将关闭程序，此后打开可正常使用")
-    time.sleep(3)
+    print("\n看起来你好像还没有设置环境变量，\n"
+          "因为当前目录内存在着platform-tools文件夹\n"
+          "如果你未曾设置过环境变量请输入Y，否则请输入n\n"
+          "输入n将重命名目录内的platform-tools文件夹\n"
+          "如不需要请自行删除\n"
+          "ps:只有设置了环境变量才可正常使用本程序")
+    while True:
+        path = input("\n是否要设置环境变量？（Y/n）：")
+        if path == "y" or path == "Y":
+            os.system("md C:\Windows\platform-tools")
+            os.system("xcopy platform-tools C:\Windows\platform-tools /e")
+            os.system('setx /M path "%path%;C:\Windows\platform-tools\"')
+            os.system("rmdir /S /Q platform-tools")
+            print("成功！三秒后将关闭程序，此后打开可正常使用")
+            time.sleep(3)
+            exit()
+        elif path == "n" or path == "N":
+            os.system("rename platform-tools platform-tool")
+            print("成功！三秒后将关闭程序，此后打开可正常使用")
+            time.sleep(3)
+            exit()
+        else:
+            print_error()
 else:
     print(allcontent)
     while True:
