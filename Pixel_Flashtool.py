@@ -25,10 +25,11 @@ content = "================================================\n" \
           "================================================\n" \
           "1.ADB&Fastboot基本指令      7.Github项目传送门\n" \
           "2.安装Android驱动           8.交流群传送门\n" \
-          "3.解锁BootLoader            a.获取教程与下载链接\n" \
-          "4.刷入第三方ROM             d.请作者喝奶茶\n" \
-          "5.刷入面具Patch.img\n" \
-          "6.酷安个人主页传送门\n\n\n0.退出\n"
+          "3.解锁BootLoader\n" \
+          "4.刷入第三方ROM\n" \
+          "5.刷入面具Patch.img         a.获取教程与下载链接\n" \
+          "6.酷安个人主页传送门        d.请作者喝奶茶\n" \
+          "\n\n0.退出\n"
 
 allcontent = title1 + "\n" + title2 + "\n" + content
 
@@ -123,22 +124,31 @@ else:
             os.system("cls")
             cmd_content = "\nADB & Fastboot基本指令\n\n" \
                           "a.检测ADB设备\nb.检测Fastboot设备\n" \
-                          "ADB:\n1.重启手机至系统\n2.重启手机至Fastboot\n3.重启手机至Recovery\n4.关闭手机\n" \
-                          "Fastboot:\n5.重启手机至系统\n6.重启手机至Fastboot\n7.重启手机至Recovery\n8.关闭手机\n\n" \
-                          "c.安装酷安\nm.安装Magisk Manager\nz.自行安装app\n\n9.自行输入命令\n0.返回上一级"
+                          "ADB:\n" \
+                          "1.重启手机至系统\n" \
+                          "2.重启手机至Fastboot\n" \
+                          "3.重启手机至Recovery\n" \
+                          "4.关闭手机\n" \
+                          "w.清除Wifi叹号（使用小米服务器）\n" \
+                          "Fastboot:\n" \
+                          "5.重启手机至系统\n" \
+                          "6.重启手机至Fastboot\n" \
+                          "7.重启手机至Recovery\n" \
+                          "8.关闭手机\n\n" \
+                          "c.安装酷安\n" \
+                          "m.安装Magisk Manager\n" \
+                          "z.自行安装app\n" \
+                          "\n9.自行输入命令\n" \
+                          "0.返回上一级"
             print(cmd_content)
-
-
-            def cmd_function():  # 清屏 + 打印命令目录
-                os.system("cls")
-                print(cmd_content)
 
 
             def cmd_input(cmdln):  # 执行指定命令
                 os.system(cmdln)
                 print("执行成功")
                 ospause()
-
+                os.system("cls")
+                print(cmd_content)
 
             while True:
                 cmd = input("\n输入你的选项：")
@@ -147,37 +157,34 @@ else:
                     print("如果没有显示一串字符和device，请检查驱动，反之则连接成功；\n"
                           "如果显示一串字符和unauthorized，请在手机上允许调试，若手机没有提示就点击开发者内的撤销USB调试授权")
                     ospause()
-                    cmd_function()
+                    os.system("cls")
+                    print(cmd_content)
                 elif cmd == "b" or cmd == "B":
                     os.system("fastboot devices")
                     print("显示一串字符和fastboot即为连接成功，反之请检查驱动")
                     ospause()
-                    cmd_function()
+                    os.system("cls")
+                    print(cmd_content)
                 elif cmd == "1":
                     cmd_input(cmdln="adb reboot")
-                    cmd_function()
                 elif cmd == "2":
                     cmd_input(cmdln="adb reboot bootloader")
-                    cmd_function()
                 elif cmd == "3":
                     cmd_input(cmdln="adb reboot recovery")
-                    cmd_function()
                 elif cmd == "4":
                     cmd_input(cmdln="adb shell reboot -p")
-                    cmd_function()
+                elif cmd == "w" or cmd == "W":
+                    os.system("adb shell settings put global captive_portal_use_https 0")
+                    cmd_input(cmdln="adb shell settings put global captive_portal_http_url http://connect.rom.miui.com/generate_204")
                 elif cmd == "5":
                     cmd_input(cmdln="fastboot reboot")
-                    cmd_function()
                 elif cmd == "6":
                     cmd_input(cmdln="fastboot reboot bootloader")
-                    cmd_function()
                 elif cmd == "7":
                     cmd_input(cmdln="fastboot reboot recovery")
-                    cmd_function()
                 elif cmd == "8":
                     print("\nSony设备拔下数据线即关机\nPixel设备点按音量键选择Power off点按电源键关机")
                     ospause()
-                    cmd_function()
                 elif cmd == "c" or cmd == "C":
                     wget.download("http://one.marvl05.site:88/apks/Coolapk.apk", "Coolapk.apk")
                     print()
@@ -185,7 +192,6 @@ else:
                     print("出现success即安装成功！")
                     ospause()
                     os.system("del Coolapk.apk")
-                    cmd_function()
                 elif cmd == "m" or cmd == "M":
                     wget.download("http://one.marvl05.site:88/apks/Magisk-v23.0.apk", "Magisk.apk")
                     print()
@@ -193,7 +199,6 @@ else:
                     print("出现success即安装成功！")
                     ospause()
                     os.system("del Magisk.apk")
-                    cmd_function()
                 elif cmd == "z" or cmd == "Z":
                     apkin = Tk()
                     apkin.withdraw()
@@ -201,7 +206,6 @@ else:
                     os.system("adb install " + apk)
                     print("出现success即安装成功！")
                     ospause()
-                    cmd_function()
                 elif cmd == "9":
                     while True:
                         cmd_in = input("输入ADB或Fastboot指令(输入exit退出)：")
@@ -209,7 +213,6 @@ else:
                             break
                         else:
                             os.system(cmd_in)
-                    cmd_function()
                 elif cmd == "0":
                     cls_printall()
                     break
