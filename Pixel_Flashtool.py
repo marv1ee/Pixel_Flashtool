@@ -79,7 +79,7 @@ def file_select(filetype, endname, flash_cmd):
 
 
 def download_img(img_filename):  # 下载patch.img并询问是否刷入 函数
-    # wget.download(img_url + img_filename, img_filename)
+    wget.download(img_url + img_filename, img_filename)
     while True:
         ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
         if ask == "Y" or ask == "y":
