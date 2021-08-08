@@ -17,15 +17,16 @@ title1 = "╭━━━┳━━┳━╮╭━┳━━━┳╮╱╱╱╭━�
 
 title2 = "\n欢迎使用酷安@铭灏MarvL05制作的半自动化解锁+刷机工具，\n" \
          "该软件专为小白设计，大佬们看看就好\n" \
+         "使用教程出视频了，输入9传送\n" \
          "教程链接和部分下载链接可以输入a获取，\n" \
-         "教程都有了不要屁大点事都来问作者/群主\n\n\n"
+         "教程都有了不要屁大点事都来问作者/群主\n\n"
 
 content = "================================================\n" \
           "=====================主菜单=====================\n" \
           "================================================\n" \
           "1.ADB&Fastboot基本指令      7.Github项目传送门\n" \
           "2.安装Android驱动           8.交流群传送门\n" \
-          "3.解锁BootLoader\n" \
+          "3.解锁BootLoader            9.教程视频传送门\n" \
           "4.刷入第三方ROM\n" \
           "5.刷入面具Patch.img         a.获取教程与下载链接\n" \
           "6.酷安个人主页传送门        d.请作者喝奶茶\n" \
@@ -78,18 +79,23 @@ def file_select(filetype, endname, flash_cmd):
 
 
 def download_img(img_filename):  # 下载patch.img并询问是否刷入 函数
-    wget.download(img_url + img_filename, img_filename)
-    ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
-    if ask == "Y" or ask == "y":
-        os.system("fastboot flash boot " + img_filename)
-        os.system("fastboot reboot")
-        ospause()
-        os.system("del " + img_filename)
-        os.system("cls")
-        print(device_content)
-    elif ask == "N" or ask == "n":
-        os.system("cls")
-        print(device_content)
+    # wget.download(img_url + img_filename, img_filename)
+    while True:
+        ask = input("\nboot文件下载完成，确认刷入吗（Y/n）：")
+        if ask == "Y" or ask == "y":
+            os.system("fastboot flash boot " + img_filename)
+            os.system("fastboot reboot")
+            ospause()
+            os.system("del " + img_filename)
+            os.system("cls")
+            print(device_content)
+            break
+        elif ask == "N" or ask == "n":
+            os.system("cls")
+            print(device_content)
+            break
+        else:
+            print_error()
 
 
 if os.path.isdir("platform-tools"):
@@ -191,6 +197,8 @@ else:
                     os.system("adb install Coolapk.apk")
                     print("出现success即安装成功！")
                     ospause()
+                    os.system("cls")
+                    print(cmd_content)
                     os.system("del Coolapk.apk")
                 elif cmd == "m" or cmd == "M":
                     wget.download("http://one.marvl05.site:88/apks/Magisk-v23.0.apk", "Magisk.apk")
@@ -198,6 +206,8 @@ else:
                     os.system("adb install Magisk.apk")
                     print("出现success即安装成功！")
                     ospause()
+                    os.system("cls")
+                    print(cmd_content)
                     os.system("del Magisk.apk")
                 elif cmd == "z" or cmd == "Z":
                     apkin = Tk()
@@ -206,6 +216,8 @@ else:
                     os.system("adb install " + apk)
                     print("出现success即安装成功！")
                     ospause()
+                    os.system("cls")
+                    print(cmd_content)
                 elif cmd == "9":
                     while True:
                         cmd_in = input("输入ADB或Fastboot指令(输入exit退出)：")
@@ -376,6 +388,9 @@ else:
             cls_printall()
         elif inn == "8":
             web_open(weburl="http://marvl05.site:88/36yx")  # 加入交流群
+            cls_printall()
+        elif inn == "9":
+            web_open(weburl="https://b23.tv/BV1Hq4y1Q76N")
             cls_printall()
         elif inn == "a" or inn == "A":
             wget.download("http://one.marvl05.site:88/help/links.txt", "links.txt")
